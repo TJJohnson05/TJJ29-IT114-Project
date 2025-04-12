@@ -1,8 +1,8 @@
-// Tyler Johnson 
-// March 7th 2025
-// Tjj29@njit.edu 
+// Tyler Johnson
+// April 11th, 2025
+// Tjj29@njit.edu
 // IT114 - 004
-// Phase 2 Assignment: Trivia Game Flow
+// Phase 4 Assignment: GUI Trivia Game Flow
 package trivia;
 import java.util.ArrayList;
 

@@ -1,10 +1,9 @@
 package trivia;
-
 // Tyler Johnson
-// March 7th, 2025
+// April 11th, 2025
 // Tjj29@njit.edu
 // IT114 - 004
-// Phase 2 Assignment: Trivia Game Flowpackage trivia;
+// Phase 4 Assignment: GUI Trivia Game Flow
 import application.netgame.common.Client;
 
 import java.io.IOException;

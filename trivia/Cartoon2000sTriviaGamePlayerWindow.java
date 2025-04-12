@@ -1,3 +1,8 @@
+// Tyler Johnson
+// April 11th, 2025
+// Tjj29@njit.edu
+// IT114 - 004
+// Phase 4 Assignment: GUI Trivia Game Flow
 package trivia;
 
 import java.awt.event.WindowAdapter;
@@ -9,7 +14,6 @@ import javax.swing.JOptionPane;
 
 
 import trivia.view.Cartoon2000sTriviaGameMainPanel;
-import trivia.view.Cartoon2000sTriviaGameScoreBoardPanel;
 import application.netgame.common.Client;
 /**
  * A GUI version of the Cartoon2000sTriviaGamePlayer class that connects to a
@@ -137,7 +141,7 @@ public class Cartoon2000sTriviaGamePlayerWindow extends JFrame {
     private Cartoon2000sTriviaGamePlayerWindow(final String host) {
         this.setTitle("Cartoon 2000s Trivia Game");
 
-        mainPanel = new Cartoon2000sTriviaGameMainPanel(mainPanel);
+        mainPanel = new Cartoon2000sTriviaGameMainPanel(this); //removed "this" from the argument
         this.add(mainPanel);
         this.pack();
 

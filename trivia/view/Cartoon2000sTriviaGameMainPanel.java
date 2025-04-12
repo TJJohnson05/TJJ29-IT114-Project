@@ -1,3 +1,8 @@
+// Tyler Johnson
+// April 11th, 2025
+// Tjj29@njit.edu
+// IT114 - 004
+// Phase 4 Assignment: GUI Trivia Game Flow
 package trivia.view;
 
 import java.awt.BorderLayout;
@@ -13,13 +18,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import trivia.Cartoon2000sTriviaGamePlayerWindow;
+
 public class Cartoon2000sTriviaGameMainPanel extends JPanel {
 
     private static final Color BLUE = Color.decode("#3b639e");
     private static final Color DARK_BLUE = Color.decode("#214276");
     private static final Color GOLD = Color.decode("#f1dfa9");
 
-    private Cartoon2000sTriviaGameMainPanel window;
+    private static Cartoon2000sTriviaGamePlayerWindow window;
 
     private Cartoon2000sTriviaGameStatusPanel statusPanel;
     private Cartoon2000sTriviaGameMessagePanel messagePanel;
@@ -30,10 +37,12 @@ public class Cartoon2000sTriviaGameMainPanel extends JPanel {
     private JButton sendButton;
     private JButton restartButton;
     private JButton quitButton;
-
-    public Cartoon2000sTriviaGameMainPanel() {
-        super();
-        initialize();
+        
+    
+        public Cartoon2000sTriviaGameMainPanel( Cartoon2000sTriviaGamePlayerWindow window) {
+            super();
+            Cartoon2000sTriviaGameMainPanel.window = window;
+            initialize();
     }
     
     
@@ -154,7 +163,7 @@ public class Cartoon2000sTriviaGameMainPanel extends JPanel {
                     public static void main(String[] args) {
         JFrame frame = new JFrame("Cartoon 2000s Trivia Game - Main Panel");
 
-        Cartoon2000sTriviaGameMainPanel panel = new Cartoon2000sTriviaGameMainPanel(); // Pass null if necessary
+        Cartoon2000sTriviaGameMainPanel panel = new Cartoon2000sTriviaGameMainPanel(window); // Pass null if necessary
         frame.add(panel);
         frame.pack();
 
