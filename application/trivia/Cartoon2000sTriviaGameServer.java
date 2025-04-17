@@ -3,7 +3,7 @@
 // Tjj29@njit.edu
 // IT114 - 004
 // Phase 4 Assignment: GUI Trivia Game Flow
-package trivia;
+package application.trivia;
 import application.netgame.common.Hub;
 
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Cartoon2000sTriviaGameServer extends Hub {
 
-    private final static int PORT = 37829;
+    private final static int PORT = 39923;
 
     private Cartoon2000sTriviaGameState state;
     private Cartoon2000sTriviaQuestionsList questions;

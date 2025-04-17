@@ -3,7 +3,7 @@
 // Tjj29@njit.edu
 // IT114 - 004
 // Phase 4 Assignment: GUI Trivia Game Flow
-package trivia;
+package application.trivia;
 
 public record Cartoon2000sTriviaQuestion(String question, String answer) {
     public boolean isCorrectAnswer(String userAnswer) {

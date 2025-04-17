@@ -3,7 +3,7 @@
 // Tjj29@njit.edu
 // IT114 - 004
 // Phase 4 Assignment: GUI Trivia Game Flow
-package trivia;
+package application.trivia;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -3,7 +3,7 @@
 // Tjj29@njit.edu
 // IT114 - 004
 // Phase 4 Assignment: GUI Trivia Game Flow
-package trivia.view;
+package application.trivia.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import trivia.Cartoon2000sTriviaGamePlayerWindow;
+import application.trivia.Cartoon2000sTriviaGamePlayerWindow;
 
 public class Cartoon2000sTriviaGameMainPanel extends JPanel {
 

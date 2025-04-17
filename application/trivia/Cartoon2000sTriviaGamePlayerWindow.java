@@ -3,7 +3,7 @@
 // Tjj29@njit.edu
 // IT114 - 004
 // Phase 4 Assignment: GUI Trivia Game Flow
-package trivia;
+package application.trivia;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -12,16 +12,15 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
-import trivia.view.Cartoon2000sTriviaGameMainPanel;
 import application.netgame.common.Client;
+import application.trivia.view.Cartoon2000sTriviaGameMainPanel;
 /**
  * A GUI version of the Cartoon2000sTriviaGamePlayer class that connects to a
  * trivia game server and communicates using Java Swing/AWT libraries.
  */
 public class Cartoon2000sTriviaGamePlayerWindow extends JFrame {
 
-    private static final int PORT = 37829; // Port number for the server.
+    private static final int PORT = 39923; // Port number for the server.
 
     private static volatile boolean connected = false; // Tracks connection status.
 

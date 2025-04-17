@@ -1,4 +1,4 @@
-package trivia;
+package application.trivia;
 // Tyler Johnson
 // April 11th, 2025
 // Tjj29@njit.edu
