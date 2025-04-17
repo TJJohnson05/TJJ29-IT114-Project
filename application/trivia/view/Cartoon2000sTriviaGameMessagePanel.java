@@ -22,7 +22,7 @@ public class Cartoon2000sTriviaGameMessagePanel extends JPanel {
 
     private static final Color GOLD = Color.decode("#f1dfa9");
     private static final Color DARK_RED = Color.decode("#ca1818");
-    private static final String IMAGE_FILENAME = "/trivia/resources/images/CartoonNetworkBG.png";
+    private static final String IMAGE_FILENAME = "/application/trivia/resources/images/CartoonNetworkBG.png";
 
     JTextArea textArea;
     JPanel textPanel;
