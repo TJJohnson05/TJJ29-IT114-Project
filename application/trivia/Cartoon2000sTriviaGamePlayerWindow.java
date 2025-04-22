@@ -97,6 +97,11 @@ public class Cartoon2000sTriviaGamePlayerWindow extends JFrame {
             } else if (message instanceof String) {
                 System.out.println(message.toString());
                 mainPanel.setMessage(message.toString());
+                if (message.toString().contains("Time's up") ||
+                    message.toString().contains("All players have answered") ||
+                    message.toString().contains("A new game is starting!")) {
+                System.out.println("Timer Off");
+                    }
             }
         }
 

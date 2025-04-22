@@ -9,6 +9,8 @@ import application.netgame.common.Hub;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Cartoon2000sTriviaGameServer extends Hub {
 
@@ -18,7 +20,8 @@ public class Cartoon2000sTriviaGameServer extends Hub {
     private Cartoon2000sTriviaQuestionsList questions;
     private int currentQuestionIndex = -1;
     private Map<Integer, String> answersReceived;
-
+    private Timer questionTimer;
+    
     public Cartoon2000sTriviaGameServer() throws IOException {
         super(PORT);
         setAutoreset(true);
@@ -28,6 +31,7 @@ public class Cartoon2000sTriviaGameServer extends Hub {
 
     private void initializeNewGame() {
         state.clearScores();
+        state.setQuestionTimer(false);
         sendToAll(state);
         questions = new Cartoon2000sTriviaQuestionsList();
         currentQuestionIndex = -1;
@@ -74,6 +78,7 @@ public class Cartoon2000sTriviaGameServer extends Hub {
         sendToAll(state);
         if (state.getPlayerCount() < 2) {
             sendToAll("Player " + playerID + " disconnected. Waiting for another player to continue the game.");
+            cancelQuestionTimer();
             initializeNewGame();
         }
         synchronized (answersReceived) {
@@ -99,6 +104,7 @@ public class Cartoon2000sTriviaGameServer extends Hub {
                     if (answersReceived.size() == state.getPlayerCount()) {
                         System.out.println("All players have answered.");
                         sendToAll("All players have answered.");
+                        cancelQuestionTimer();
                         evaluateAnswers();
                         sendToAll(state);
                     }
@@ -116,6 +122,9 @@ public class Cartoon2000sTriviaGameServer extends Hub {
 
         Cartoon2000sTriviaQuestion currentQuestion = questions.get(currentQuestionIndex);
         sendToAll("Question: " + currentQuestion.question());
+        startQuestionTimer();
+        sendToAll(state);
+ 
     }
 
     private void evaluateAnswers() {
@@ -156,4 +165,25 @@ public class Cartoon2000sTriviaGameServer extends Hub {
             System.out.println("Error starting server: " + e.getMessage());
         }
     }
+    private void startQuestionTimer() {
+        state.setQuestionTimer(false);
+        cancelQuestionTimer(); // Cancel any previous timer.
+        state.setQuestionTimer(true);
+        questionTimer = new Timer();
+        questionTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+              sendToAll("Time's up!");
+              evaluateAnswers();
+            }
+        }, Cartoon2000sTriviaGameState.QUESTION_TIMER_SECONDS * 1000);
+     }
+     private void cancelQuestionTimer() {
+        state.setQuestionTimer(false);
+        if (questionTimer != null) {
+            questionTimer.cancel();
+            questionTimer = null;
+        }
+     }
+     
 }

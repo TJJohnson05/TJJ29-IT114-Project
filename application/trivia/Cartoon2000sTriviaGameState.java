@@ -16,7 +16,17 @@ public class Cartoon2000sTriviaGameState implements Serializable {
     private static final long serialVersionUID = 1L;
     public String message; // Message sent by a client
     public int senderID; // ID of the player sending the message
-    HashMap<Integer, Integer> playerScores;
+    public HashMap<Integer, Integer> playerScores;
+    public static int QUESTION_TIMER_SECONDS = 15;
+    private boolean questionTimer;
+   
+    public boolean isQuestionTimer() {
+       return questionTimer;
+   }
+   public void setQuestionTimer(boolean questionTimer) {
+       this.questionTimer = questionTimer;
+    }
+
 
     public Cartoon2000sTriviaGameState() {
         playerScores = new HashMap<>();

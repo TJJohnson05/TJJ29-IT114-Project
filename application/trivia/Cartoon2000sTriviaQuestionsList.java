@@ -4,38 +4,45 @@
 // IT114 - 004
 // Phase 4 Assignment: GUI Trivia Game Flow
 package application.trivia;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 
 public class Cartoon2000sTriviaQuestionsList {
-    private ArrayList<Cartoon2000sTriviaQuestion> questions;
+    private static ArrayList<Cartoon2000sTriviaQuestion> questions;
+    private LinkedList<Cartoon2000sTriviaQuestion> roundQuestions;
+    private static int QUESTIONS_PER_ROUND = 5;
+    private static final String QUESTIONS_FILENAME = "application/trivia/resources/Cartoon2000sTriviaQuestions.csv";
 
     public Cartoon2000sTriviaQuestionsList() {
-        questions = new ArrayList<>();
-        
-        questions.add(new Cartoon2000sTriviaQuestion(
-            "In 'Avatar: The Last Airbender', what is the name of Aang's flying bison?", 
-            "Appa"
-        ));
+        if (questions.isEmpty()) {
+           try (
+               InputStream inputStream = getClass().getClassLoader().getResourceAsStream(QUESTIONS_FILENAME);
+               BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))
+           ) {
+               String line;
+               while ((line = reader.readLine()) != null) {
+                   String[] parts = line.split(",", 2);
+                   if (parts.length == 2) {
+                       questions.add(new Cartoon2000sTriviaQuestion(parts[0].trim(), parts[1].trim()));
+                   }
+               }
+           } catch (Exception e) {
+               e.printStackTrace(); // Log error if file not found or reading fails
+           }
 
-        questions.add(new Cartoon2000sTriviaQuestion(
-            "Which 2000s cartoon follows the adventures of a boy genius named Dexter and his secret laboratory?", 
-            "Dexter's Laboratory"
-        ));
-
-        questions.add(new Cartoon2000sTriviaQuestion(
-            "In 'Teen Titans', which member of the team has the ability to transform into animals?", 
-            "Beast Boy"
-        ));
-
-        questions.add(new Cartoon2000sTriviaQuestion(
-            "What is the name of the school that Jake Long attends in 'American Dragon: Jake Long'?", 
-            "Millard Fillmore Middle School"
-        ));
-
-        questions.add(new Cartoon2000sTriviaQuestion(
-            "In 'Codename: Kids Next Door', what is the codename of the team's leader?", 
-            "Numbuh One"
-        ));
+    
+         Collections.shuffle(questions);
+        // Create a LinkedList to hold random questions for one round
+        roundQuestions = new LinkedList<>();        
+        // Add random questions to the roundQuestions list
+        for (int i = 0; i < QUESTIONS_PER_ROUND; i++) {
+            roundQuestions.add(questions.get(i));
+        }
+    }
     }
 
     public Cartoon2000sTriviaQuestion get(int currentQuestionIndex) {
@@ -46,3 +53,5 @@ public class Cartoon2000sTriviaQuestionsList {
         return questions.size();
     }
 }
+
+

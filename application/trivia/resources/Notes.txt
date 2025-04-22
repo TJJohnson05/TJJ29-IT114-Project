@@ -1,0 +1,1 @@
+java -jar Cartoon2000sTriviaGameServer.jar
