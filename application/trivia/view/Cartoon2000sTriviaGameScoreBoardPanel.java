@@ -15,8 +15,6 @@ import java.util.Map;
 import javax.swing.Timer;
 import javax.swing.SwingUtilities;
 
-
-
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -106,14 +104,24 @@ public class Cartoon2000sTriviaGameScoreBoardPanel extends JPanel {
         String time = String.format("%02d:%02d", minutes, seconds);
 
         // Ensure the update happens on the Event Dispatch Thread
-        SwingUtilities.invokeLater(() -> southLabel.setText(time));
+        SwingUtilities.invokeLater(() -> {
+            southLabel.setText(time);
+            // Force a re-layout and repaint after updating the label
+            revalidate();
+            repaint();
+        });
     } else {
         // Stop the timer once it reaches 00:00
         timerStarted = false;
         timeLeftInSeconds = 0;
         timer.stop();
         // Ensure the update happens on the Event Dispatch Thread
-        SwingUtilities.invokeLater(() -> southLabel.setText("00:00"));
+        SwingUtilities.invokeLater(() -> {
+            southLabel.setText("00:00");
+            // Force a re-layout and repaint after updating the label
+            revalidate();
+            repaint();
+        });
     }
 }
   // Method to stop the timer and clear the label
