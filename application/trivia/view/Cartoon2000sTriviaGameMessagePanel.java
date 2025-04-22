@@ -84,7 +84,7 @@ public class Cartoon2000sTriviaGameMessagePanel extends JPanel {
         Cartoon2000sTriviaGameMessagePanel panel = new Cartoon2000sTriviaGameMessagePanel();
         frame.add(panel);
         frame.pack();
-        frame.setSize(686, 386);
+        frame.setSize(800, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
