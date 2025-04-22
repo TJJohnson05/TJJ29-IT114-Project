@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.Timer;
+import javax.swing.SwingUtilities;
 
 
 
@@ -98,20 +99,23 @@ public class Cartoon2000sTriviaGameScoreBoardPanel extends JPanel {
 
   // Method to update the countdown timer
   private void updateTimer(ActionEvent event) {
-    if (timeLeftInSeconds > 0 && timerStarted == true) {
-      timeLeftInSeconds--;
-      int minutes = timeLeftInSeconds / 60;
-      int seconds = timeLeftInSeconds % 60;
-      String time = String.format("%02d:%02d", minutes, seconds);
-      southLabel.setText(time);
-    } else {
-      // Stop the timer once it reaches 00:00
-      timerStarted = false;
-      timeLeftInSeconds = 0;
-      timer.stop();
-    }
-  }
+    if (timeLeftInSeconds > 0 && timerStarted) {
+        timeLeftInSeconds--;
+        int minutes = timeLeftInSeconds / 60;
+        int seconds = timeLeftInSeconds % 60;
+        String time = String.format("%02d:%02d", minutes, seconds);
 
+        // Ensure the update happens on the Event Dispatch Thread
+        SwingUtilities.invokeLater(() -> southLabel.setText(time));
+    } else {
+        // Stop the timer once it reaches 00:00
+        timerStarted = false;
+        timeLeftInSeconds = 0;
+        timer.stop();
+        // Ensure the update happens on the Event Dispatch Thread
+        SwingUtilities.invokeLater(() -> southLabel.setText("00:00"));
+    }
+}
   // Method to stop the timer and clear the label
   public void stopTimer() {
     if (timer != null) {
