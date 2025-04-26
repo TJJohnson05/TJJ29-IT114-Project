@@ -159,6 +159,13 @@ public class Cartoon2000sTriviaGameMainPanel extends JPanel {
         window.doQuit();
       
     }
+
+    public void updateQuestionTimer(boolean questionTimer) {
+        if(questionTimer)
+          scoreBoardPanel.startQuestionTimer();
+        else
+          scoreBoardPanel.stopTimer();
+      }
         
                     public static void main(String[] args) {
         JFrame frame = new JFrame("Cartoon 2000s Trivia Game - Main Panel");

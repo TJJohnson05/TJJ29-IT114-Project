@@ -90,18 +90,21 @@ public class Cartoon2000sTriviaGamePlayerWindow extends JFrame {
         protected void messageReceived(Object message) {
             if (message instanceof Cartoon2000sTriviaGameState) {
                 Cartoon2000sTriviaGameState state = (Cartoon2000sTriviaGameState) message;
+                System.out.println("Timer On? " + state.isQuestionTimer());
                 mainPanel.updateScoreBoard(state.playerScores);
+                mainPanel.updateQuestionTimer(state.isQuestionTimer());
                 if (state.senderID != 0) {
-                    System.out.println("Player " + state.senderID + ": " + state.message);
+                    System.out.println("Player  " + state.senderID + ": " + state.message);
                 }
             } else if (message instanceof String) {
                 System.out.println(message.toString());
                 mainPanel.setMessage(message.toString());
-                if (message.toString().contains("Time's up") ||
-                    message.toString().contains("All players have answered") ||
-                    message.toString().contains("A new game is starting!")) {
+                if(message.toString().contains("Time's up") ||
+                message.toString().contains("All players have answered") ||
+                message.toString().contains("A new game is starting!")) {
                 System.out.println("Timer Off");
-                    }
+                mainPanel.updateQuestionTimer(false);
+       }
             }
         }
 
