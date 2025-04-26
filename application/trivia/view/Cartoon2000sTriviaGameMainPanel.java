@@ -142,14 +142,9 @@ public class Cartoon2000sTriviaGameMainPanel extends JPanel {
                 answerText.setText("");
                 answerText.requestFocus();
             }
-        
-            private void send(String message) {
             
-              throw new UnsupportedOperationException("Unimplemented method 'send'");
-            }
-        
             private void restartGame(ActionEvent event) {
-        window.send("restart");
+                window.send("restart");
     }
     public void doQuit() {
       System.exit(0);  // This will terminate the program

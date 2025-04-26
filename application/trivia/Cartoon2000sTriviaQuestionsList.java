@@ -24,10 +24,6 @@ public class Cartoon2000sTriviaQuestionsList {
                 InputStream inputStream = getClass().getClassLoader().getResourceAsStream(QUESTIONS_FILENAME);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))
             ) {
-                if (inputStream == null) {
-                    throw new Exception("File not found: " + QUESTIONS_FILENAME);
-                }
-
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",", 2);
@@ -53,10 +49,10 @@ public class Cartoon2000sTriviaQuestionsList {
     }
 
     public Cartoon2000sTriviaQuestion get(int currentQuestionIndex) {
-        return questions.get(currentQuestionIndex);
+        return roundQuestions.get(currentQuestionIndex);
     }
 
     public int size() {
-        return questions.size();
+        return roundQuestions.size();
     }
 }

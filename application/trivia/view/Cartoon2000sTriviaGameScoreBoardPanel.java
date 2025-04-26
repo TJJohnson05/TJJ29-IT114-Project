@@ -138,7 +138,7 @@ public class Cartoon2000sTriviaGameScoreBoardPanel extends JPanel {
   }
 
   public static void main(String[] args) throws InterruptedException {
-    JFrame frame = new JFrame("Movie Score Board - Tjj29@njit.edu");
+    JFrame frame = new JFrame("Cartoon2000s Score Board - Tjj29@njit.edu");
 
 
     Cartoon2000sTriviaGameScoreBoardPanel panel = new Cartoon2000sTriviaGameScoreBoardPanel();
